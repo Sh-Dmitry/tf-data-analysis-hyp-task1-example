@@ -9,14 +9,11 @@ def solution(x_success: int,
              x_cnt: int, 
              y_success: int, 
              y_cnt: int) -> bool:
-  p = 0.05    
-  count = np.array([x_success, x_cnt])
-  nobs = np.array([y_success, y_cnt])
+  p = 0.05        
+  nobs = np.array([x_cnt, y_cnt])
+  count = np.array([x_success, y_success])
   stat, pval = proportions_ztest(count, nobs, alternative='larger')
-  if pval >= p:
-    return False
-  else:
-    return True
+  return pval < p
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
